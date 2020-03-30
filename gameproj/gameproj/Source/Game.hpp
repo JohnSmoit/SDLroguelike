@@ -7,6 +7,7 @@
 
 #include "TextureManager.hpp"
 #include "BoundingBox.hpp"
+#include "Camera.hpp"
 //#include "PhysicsManager.hpp"
 
 class Game 
@@ -26,6 +27,7 @@ public:
     bool running() { return isRunning; };
 
     static SDL_Renderer *renderer;
+    //static const Camera* cam = &new Camera;
     
 private:
     bool isRunning;

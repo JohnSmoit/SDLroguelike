@@ -4,7 +4,7 @@
 
 
 
-Vector2* GameObject::getPosition() 
+Vector2* GameObject::getPosition() //global position
 {
     return &position;
 }
@@ -17,6 +17,16 @@ void GameObject::bound(float x, float y)
 {
     position.x = x;
     position.y = y;
+}
+
+Vector2* GameObject::getPositionLocal() 
+{
+    return &positionLocal; // the offset based on camera
+}
+
+void GameObject::setPositionLocal() 
+{
+    
 }
 
 // GameObject::GameObject(const char* texturesheet, int x, int y) 

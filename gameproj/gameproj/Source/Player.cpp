@@ -18,10 +18,11 @@ Player::Player(const char* texture) //override
     destRect.h = srcRect.h * 2;
 
     //Vector2 dimensions;
-    boundingBox.max.x = position.x + srcRect.w;
-    boundingBox.max.y = position.y + srcRect.h;
-    std::cout << boundingBox.max.x << std::endl;
-    boundingBox.min = position;
+    boundingBox.max.x = srcRect.w;
+    boundingBox.max.y = srcRect.h;
+    boundingBox.min.x = position.x;
+    boundingBox.min.y = position.y;
+    //std::cout << boundingBox.max.x << std::endl;
 
 
 }
@@ -48,6 +49,8 @@ void Player::Update(bool up, bool down, bool left, bool right)
     //std::cout << destRect.x<< std::endl;
     destRect.x = position.x;
     destRect.y = position.y;
+    boundingBox.min.x = position.x;
+    boundingBox.min.y = position.y;
 }
 void Player::Render() 
 {

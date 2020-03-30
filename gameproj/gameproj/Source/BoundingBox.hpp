@@ -10,8 +10,8 @@ typedef struct
 
 typedef struct 
 {
-    Vector2 min;
-    Vector2 max;
+    Vector2 min; //position
+    Vector2 max; //widht and height
 } AABB; //axis aligned bounding box.
 
 #endif

@@ -138,14 +138,14 @@ void Game::update()
     player1->Update(k_W, k_S, k_A, k_D);
     //player2->Update(false, false, false, false);
 
-    //if (PhysicsManager::checkAABBCollisions(player1->getBoundingBox(), player2->getBoundingBox())) 
-    //{
-        //std::cout << "Colliding!!!!" << std::endl;
-    //}
-    //else 
-    //{
-        //std::cout << "not Colliding!!!" << std::endl;
-    //}
+    if (PhysicsManager::checkAABBCollisions(player1->getBoundingBox(), enemy->getBoundingBox())) 
+    {
+        std::cout << "Colliding!!!!" << std::endl;
+    }
+    else 
+    {
+        std::cout << "not Colliding!!!" << std::endl;
+    }
 }
 
 void Game::render() 
