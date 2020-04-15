@@ -5,6 +5,11 @@
 #include <SDL2/SDL_image.h>
 #include <iostream>
 
+#include "TextureManager.hpp"
+#include "BoundingBox.hpp"
+#include "Camera.hpp"
+//#include "PhysicsManager.hpp"
+
 class Game 
 {
 
@@ -17,14 +22,16 @@ public:
     void update();
     void render();
 
-    void init(const char *title, int xpos, int ypos, int width, int height, bool fullscreen);
+    void init(const char* texture, int xpos, int ypos, int width, int height, bool fullscreen);
     void clean();
     bool running() { return isRunning; };
+
+    static SDL_Renderer *renderer;
+    //static const Camera* cam = &new Camera;
     
 private:
     bool isRunning;
     SDL_Window *window;
-    SDL_Renderer *renderer;
 };
 
 #endif /* Game_hpp */

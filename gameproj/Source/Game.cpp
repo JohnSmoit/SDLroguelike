@@ -1,6 +1,26 @@
 #include "Game.hpp"
+//#include "GameObject.hpp"
+#include "Map.hpp"
+#include "Player.hpp"
+#include "PhysicsManager.hpp"
+#include "NonPlayer.hpp"
+#include <random>
 
-SDL_Texture* player;
+//#include "ECS.hpp"
+//#include "Components.hpp"
+
+//GameObject* player, *slime;
+Player* player1;//, *player2;
+NonPlayer* enemy;
+
+SDL_Texture* backGround;
+SDL_Rect src, dest;
+
+SDL_Renderer* Game::renderer = nullptr;
+
+bool k_W, k_A, k_S, k_D;
+
+
 
 Game::Game() 
 {
@@ -11,6 +31,7 @@ Game::~Game() {}
 void Game::init(const char *title, int xpos, int ypos, int width, int height, bool fullscreen) 
 {
     int flags = 0;
+    srand(time(NULL));
 
     if (fullscreen) 
     {
@@ -36,9 +57,19 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
         }
         isRunning = true;
 
-        SDL_Surface* surfacetmp = IMG_Load("assets/player.png");
-        player = SDL_CreateTextureFromSurface(renderer, surfacetmp);
-        SDL_FreeSurface(surfacetmp);
+        player1 = new Player("assets/player.png");
+        enemy = new NonPlayer("assets/slime_green.png");
+        player1->bound(450, 450);
+        //enemy->bound(rand() % 800, rand() % 640);
+        src.x = src.y = dest.x = dest.y = 0;
+        src.w = src.h = 200;
+        dest.w = 800;
+        dest.h = 800;
+        backGround = TextureManager::LoadTexture("assets/Background.png");
+        //map = new Map();
+        //SDL_FreeSurface(surfacetmp);
+        //newPlayer.addComponent<PositionComponent>();
+        //newPlayer.getComponent<PositionComponent>();
 
     } 
     else 
@@ -48,7 +79,7 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
     }
 }
 
-void Game::handleInput() 
+void Game::handleInput() //input registering (theres gotta be a better way).
 {
     SDL_Event event;
     SDL_PollEvent(&event);
@@ -56,6 +87,45 @@ void Game::handleInput()
     {
         case SDL_QUIT:
             isRunning = false;
+            break;
+        case SDL_KEYDOWN:
+            switch(event.key.keysym.sym) 
+            {
+                case SDLK_w:
+                    k_W = true;
+                    break;
+                case SDLK_a:
+                    k_A = true;
+                    break;
+                case SDLK_s:
+                    k_S = true;
+                    break;
+                case SDLK_d:
+                    k_D = true;
+                    break;
+                default:
+                    break;
+            }
+            break;
+        case SDL_KEYUP:
+            switch(event.key.keysym.sym) 
+            {
+                case SDLK_w:
+                    //std::cout << "HI";
+                    k_W = false;
+                    break;
+                case SDLK_a:
+                    k_A = false;
+                    break;
+                case SDLK_s:
+                    k_S = false;
+                    break;
+                case SDLK_d:
+                    k_D = false;
+                    break;
+                default:
+                    break;
+            }
             break;
         default:
             break;
@@ -65,12 +135,34 @@ void Game::handleInput()
 void Game::update() 
 {
 
+    player1->Update(k_W, k_S, k_A, k_D);
+
+    if (PhysicsManager::checkAABBCollisions(player1->getBoundingBox(), enemy->getBoundingBox(), p)) 
+    {
+       // std::cout << "Colliding!!!!" << std::endl;
+        //player1->colliding = true;
+        PhysicsManager::Rebound(player1, enemy);
+    }
+    else 
+    {
+       // std::cout << "not Colliding!!!" << std::endl;
+    }
+    //player1->setVelocity(0, 0);
+    //player2->Update(false, false, false, false);
+
 }
 
 void Game::render() 
 {
     SDL_RenderClear(renderer);
-    SDL_RenderCopy(renderer, player, NULL, NULL);
+    SDL_RenderCopy(Game::renderer, backGround, &src, &dest);
+    player1->Render();
+    enemy->Render();
+    //player2->Render();
+    //map->DrawMap();
+    // player->Render();
+    // slime->Render();
+
     SDL_RenderPresent(renderer);
 }
 
