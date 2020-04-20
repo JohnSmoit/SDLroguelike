@@ -40,52 +40,28 @@ Since this project was made without the use of an IDE (so far), you will need to
 
 At this point in time, it is only necessary to compile and debug the project.
 
-### Break down into end to end tests
-
-Explain what these tests test and why <b>hruh?</b>
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why <b>hruh?</b>
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system <b> no deployment as of now</b>
+ <b> no deployment as of now</b>
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+*SDL2 and all associated Libraries
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+- Mauckc
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+no actual versions as of yet
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+- Ryan A
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+idk what this is but probably creative commons
 
 ## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* Those who helped my sucky code work.
+* Inspired by: Terraria
