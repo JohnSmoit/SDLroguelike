@@ -57,10 +57,10 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
         }
         isRunning = true;
 
-        player1 = new Player("assets/player.png");
-        enemy = new NonPlayer("assets/slime_green.png");
-        player1->bound(450, 450);
-        //enemy->bound(rand() % 800, rand() % 640);
+        player1 = new Player("assets/sand.png");
+        enemy = new NonPlayer("assets/stone.png");
+        player1->bound(0, 0);
+        enemy->bound(400, 320);
         src.x = src.y = dest.x = dest.y = 0;
         src.w = src.h = 200;
         dest.w = 800;
@@ -135,18 +135,20 @@ void Game::handleInput() //input registering (theres gotta be a better way).
 void Game::update() 
 {
 
-    player1->Update(k_W, k_S, k_A, k_D);
 
-    if (PhysicsManager::checkAABBCollisions(player1->getBoundingBox(), enemy->getBoundingBox(), p)) 
+    if (PhysicsManager::checkAABBCollisions(player1, enemy)) 
     {
+        std::cout << "colliding!" << std::endl;
        // std::cout << "Colliding!!!!" << std::endl;
         //player1->colliding = true;
         PhysicsManager::Rebound(player1, enemy);
     }
     else 
     {
-       // std::cout << "not Colliding!!!" << std::endl;
+        std::cout << "not colliding!" << std::endl;
     }
+    player1->zeroVelocity();
+    player1->Update(k_W, k_S, k_A, k_D);
     //player1->setVelocity(0, 0);
     //player2->Update(false, false, false, false);
 
@@ -173,4 +175,3 @@ void Game::clean()
     SDL_Quit();
     std::cout << "Game Successfully Cleaned." << std::endl;
 }
-//void Game::Ahsfiasljfso(ajshaksdjadjakasd) {}

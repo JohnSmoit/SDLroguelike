@@ -7,15 +7,15 @@ Player::Player(const char* texture) //override
 
     objtexture = TextureManager::LoadTexture(texture);
 
-    srcRect.w = 43;
-    srcRect.h = 43;
+    srcRect.w = 86;
+    srcRect.h = 86;
     srcRect.x = 0;
     srcRect.y = 0;
 
     destRect.x = position.x;
     destRect.y = position.y;
-    destRect.w = srcRect.w * 2;
-    destRect.h = srcRect.h * 2;
+    destRect.w = srcRect.w ;
+    destRect.h = srcRect.h ;
 
     velocity.x = velocity.y = 0;
 
@@ -32,41 +32,31 @@ Player::Player(const char* texture) //override
 void Player::Update(bool up, bool down, bool left, bool right)
 {
 
-    //std::cout << destRect.x<< std::endl;
-    if (colliding) 
+
+    if (up) 
     {
-        colliding = false;
-        invertVelocity();
-        //zeroVelocity();
+        velocity.y -= speed;
     }
-    else 
+    if (down) 
     {
-        if (up) 
-        {
-            velocity.y -= speed;
-        }
-        if (down) 
-        {
-            velocity.y += speed;
-        }
-        if (left) 
-        {
-            //std::cout << "left";
-            velocity.x -= speed;
-        }
-        if (right) 
-        {
-            velocity.x += speed;
-        }
+        velocity.y += speed;
     }
+    if (left) 
+    {
+        //std::cout << "left";
+        velocity.x -= speed;
+    }
+    if (right) 
+    {
+        velocity.x += speed;
+    }
+
     position.x += velocity.x;
     position.y += velocity.y;
     destRect.x = position.x;
     destRect.y = position.y;
     boundingBox.min.x = position.x;
     boundingBox.min.y = position.y;
-    velocity.x = 0;
-    velocity.y = 0;
 }
 void Player::Render() 
 {

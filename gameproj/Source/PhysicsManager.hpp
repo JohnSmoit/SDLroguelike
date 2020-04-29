@@ -8,9 +8,10 @@
 class PhysicsManager 
 {
     public:
-        static bool checkAABBCollisions(AABB* a, AABB* b);
+        static bool checkAABBCollisions(GameObject* obj1, GameObject* obj2);
         static void physicsUpdate(Vector2* v);
-        static void Rebound(GameObject* obj1, GameObject* obj2, Vector2* vel); 
+        static void Rebound(GameObject* obj1, GameObject* obj2);
+        static void AABBCollisionRespond(GameObject* obj1, GameObject* obj2);
     private:
         static void gravity(Vector2* v);
 };
