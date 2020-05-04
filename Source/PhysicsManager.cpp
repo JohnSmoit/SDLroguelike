@@ -4,10 +4,10 @@
 
 bool PhysicsManager::checkAABBCollisions(GameObject* obj1, GameObject* obj2) 
 {
-    AABB* a = obj1->getBoundingBox();
+    AABB* a = obj1->getBoundingBox(); //gets what is required for collision detection (bounding boxes)
     AABB* b = obj2->getBoundingBox();
-    Vector2* vel1 = obj1->getVelocity();
-    Vector2* vel2 = obj2->getVelocity();
+    //Vector2* vel1 = obj1->getVelocity();
+    //Vector2* vel2 = obj2->getVelocity();
     std::cout << b->min.x << std::endl;
     bool x, y;
     x = y = false;
@@ -46,7 +46,7 @@ void PhysicsManager::Rebound(GameObject* obj1, GameObject* obj2) //for two solid
     //vel2 = obj2->getVelocity();
     //std::cout << vel1->x << std::endl;
     //determines whether obj1 is to the left or right of obj2's central position
-    if (abs(vel1->x) > abs(vel1->y)) {
+    if (abs(pos1.x - pos2.x) > abs(pos1.y - pos2.y)) { //is now based on position so that collisions happen reliably.
         if (pos1.x > pos2.x) 
         {
             response.x = (b->min.x + b->max.x - a->min.x); 
@@ -56,7 +56,7 @@ void PhysicsManager::Rebound(GameObject* obj1, GameObject* obj2) //for two solid
             response.x = -(a->min.x + a->max.x - b->min.x);
         }
     }
-    else if (abs(vel1->x) < abs(vel1->y)) {
+    else if (abs(pos1.x - pos2.x) < abs(pos1.y - pos2.y)) {
         if (pos1.y < pos2.y) 
         {
             response.y = -(a->min.y + a->max.y - b->min.y);
@@ -86,6 +86,16 @@ void PhysicsManager::Rebound(GameObject* obj1, GameObject* obj2) //for two solid
 void PhysicsManager::AABBCollisionRespond(GameObject* obj1, GameObject* obj2) //obj1 is the object to be moved and obj2 is the immovable physically enabled object possibly goes both ways
 {
     //add an immutable property if block
-
+                                            //not used
     //posCentral.x =;
 }
+
+/*
+most of these algorthms were developed without much use of outside sources.
+
+There are sources used for research:
+
+https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
+https://stackoverflow.com/questions/3251561/good-2d-collision-response-references
+
+*/

@@ -132,11 +132,11 @@ void Game::handleInput() //input registering (theres gotta be a better way).
     }
 }
 
-void Game::update() 
+void Game::update() //main game loop methods.
 {
 
 
-    if (PhysicsManager::checkAABBCollisions(player1, enemy)) 
+    if (PhysicsManager::checkAABBCollisions(player1, enemy)) //collisions checked before movement
     {
         std::cout << "colliding!" << std::endl;
        // std::cout << "Colliding!!!!" << std::endl;
@@ -154,7 +154,7 @@ void Game::update()
 
 }
 
-void Game::render() 
+void Game::render() //handles drawing of graphics.
 {
     SDL_RenderClear(renderer);
     SDL_RenderCopy(Game::renderer, backGround, &src, &dest);
