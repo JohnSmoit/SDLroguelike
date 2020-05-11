@@ -10,7 +10,7 @@ class Entity : public GameObject
     public:
         Entity() {}
         ~Entity() {}
-        virtual void spawn() {} //temporary
+        virtual void spawn() {} //temporary essentially an init method.
         virtual void Update() {}
         virtual void Render() {}
     protected:

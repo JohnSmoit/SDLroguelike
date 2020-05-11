@@ -29,7 +29,7 @@ Player::Player(const char* texture) //override
 
 }
 
-void Player::Update(bool up, bool down, bool left, bool right)
+void Player::Update(bool up, bool down, bool left, bool right, bool isJumping)
 {
 
 
@@ -49,6 +49,10 @@ void Player::Update(bool up, bool down, bool left, bool right)
     if (right) 
     {
         velocity.x += speed;
+    }
+    if (isJumping) 
+    {
+        velocity.y -= 25;
     }
 
     position.x += velocity.x;

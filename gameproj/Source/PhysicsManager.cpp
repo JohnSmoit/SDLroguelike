@@ -35,7 +35,7 @@ void PhysicsManager::Rebound(GameObject* obj1, GameObject* obj2) //for two solid
     AABB* b = obj2->getBoundingBox();
     Vector2 response;
     Vector2* vel1;
-    Vector2*vel2; // unused
+    Vector2* vel2; // unused
    
     Vector2 pos1, pos2; //pos 1 is obj1's central position based on its bounding box and pos2 is the same with obj2.
     pos1.x = a->min.x + a->max.x / 2;
@@ -66,28 +66,30 @@ void PhysicsManager::Rebound(GameObject* obj1, GameObject* obj2) //for two solid
             response.y = (b->min.y + b->max.y - a->min.y);
         }
     }
-    // else 
-    // {
-    //     if (vel1->x < 0 && vel1->y < 0) 
-    //     {
-    //         if ()
-    //         response.y = -(a->min.y + a->max.y - b->min.y);
-    //     }
-    //     else 
-    //     {
-    //         response.y = (b->min.y + b->max.y - a->min.y);
-    //     }
-    // }
+    /*
+    todo 5/6/20 : make the response method factor in differences in height and width.
+    so that when Bboxes have different widths than heights, the movable object does not glitch.
+    */
 
     obj1->bound(a->min.x + response.x, a->min.y + response.y);
 
 }
 
-void PhysicsManager::AABBCollisionRespond(GameObject* obj1, GameObject* obj2) //obj1 is the object to be moved and obj2 is the immovable physically enabled object possibly goes both ways
+void PhysicsManager::gravity(GameObject* obj1) //temporary
 {
-    //add an immutable property if block
-                                            //not used
-    //posCentral.x =;
+    //adds gravity constant to current velocity and gets nullified if colliding along the y axis.
+}
+
+void PhysicsManager::physicsUpdate(GameObject* obj1, GameObject* obj2) 
+{
+    if (PhysicsManager::checkAABBCollisions(obj1, obj2)) //collisions checked after movement
+    {
+        PhysicsManager::Rebound(obj1, obj2); // replace with generalized version once more than one enemy exists.
+    }
+    else 
+    {
+        PhysicsManager::gravity(obj1);
+    }
 }
 
 /*

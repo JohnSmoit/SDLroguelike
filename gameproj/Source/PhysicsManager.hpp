@@ -9,11 +9,13 @@ class PhysicsManager
 {
     public:
         static bool checkAABBCollisions(GameObject* obj1, GameObject* obj2);
-        static void physicsUpdate(Vector2* v);
+        static void physicsUpdate(GameObject* obj1, GameObject* obj2);
         static void Rebound(GameObject* obj1, GameObject* obj2);
         static void AABBCollisionRespond(GameObject* obj1, GameObject* obj2);
+        static void gravity(GameObject* obj1);
     private:
-        static void gravity(Vector2* v);
+        const float gravity_constant = 9.8; //not actually accuraate but wc
+
 };
 
 

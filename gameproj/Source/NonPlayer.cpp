@@ -4,8 +4,8 @@ NonPlayer::NonPlayer(const char* texture)
 {
     objtexture = TextureManager::LoadTexture(texture);
 
-    srcRect.w = 86;
-    srcRect.h = 86;
+    srcRect.w = 1000;
+    srcRect.h = 1000;
     srcRect.x = 0;
     srcRect.y = 0;
     

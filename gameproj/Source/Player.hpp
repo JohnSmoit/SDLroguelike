@@ -9,7 +9,7 @@ class Player : public Entity
     public:
         Player(const char* texture);
         ~Player();
-        void Update(bool up, bool down, bool left, bool right);
+        void Update(bool up, bool down, bool left, bool right, bool isJumping);
         void Render();
     private:
         void RegisterInput();

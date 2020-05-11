@@ -18,7 +18,7 @@ SDL_Rect src, dest;
 
 SDL_Renderer* Game::renderer = nullptr;
 
-bool k_W, k_A, k_S, k_D;
+bool k_W, k_A, k_S, k_D, k_Space;
 
 
 
@@ -57,10 +57,10 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
         }
         isRunning = true;
 
-        player1 = new Player("assets/sand.png");
+        player1 = new Player("assets/player.png");
         enemy = new NonPlayer("assets/stone.png");
         player1->bound(0, 0);
-        enemy->bound(400, 320);
+        enemy->bound(0, 580);
         src.x = src.y = dest.x = dest.y = 0;
         src.w = src.h = 200;
         dest.w = 800;
@@ -103,6 +103,9 @@ void Game::handleInput() //input registering (theres gotta be a better way).
                 case SDLK_d:
                     k_D = true;
                     break;
+                case SDLK_SPACE:
+                    k_Space = true;
+                    break;
                 default:
                     break;
             }
@@ -123,6 +126,9 @@ void Game::handleInput() //input registering (theres gotta be a better way).
                 case SDLK_d:
                     k_D = false;
                     break;
+                case SDLK_SPACE:
+                    k_Space = false;
+                    break;
                 default:
                     break;
             }
@@ -136,6 +142,9 @@ void Game::update() //main game loop methods.
 {
 
 
+
+    player1->zeroVelocity();
+    player1->Update(k_W, k_S, k_A, k_D, k_Space);
     if (PhysicsManager::checkAABBCollisions(player1, enemy)) //collisions checked before movement
     {
         std::cout << "colliding!" << std::endl;
@@ -147,8 +156,6 @@ void Game::update() //main game loop methods.
     {
         std::cout << "not colliding!" << std::endl;
     }
-    player1->zeroVelocity();
-    player1->Update(k_W, k_S, k_A, k_D);
     //player1->setVelocity(0, 0);
     //player2->Update(false, false, false, false);
 
