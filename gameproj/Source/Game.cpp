@@ -57,15 +57,15 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
         }
         isRunning = true;
 
-        player1 = new Player("assets/player.png");
-        enemy = new NonPlayer("assets/stone.png");
+        player1 = new Player("gameproj/assets/player.png");
+        enemy = new NonPlayer("gameproj/assets/stone.png");
         player1->bound(0, 0);
         enemy->bound(0, 580);
         src.x = src.y = dest.x = dest.y = 0;
         src.w = src.h = 200;
         dest.w = 800;
         dest.h = 800;
-        backGround = TextureManager::LoadTexture("assets/Background.png");
+        backGround = TextureManager::LoadTexture("gameproj/assets/Background.png");
         //map = new Map();
         //SDL_FreeSurface(surfacetmp);
         //newPlayer.addComponent<PositionComponent>();
