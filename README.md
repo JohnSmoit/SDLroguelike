@@ -65,3 +65,24 @@ idk what this is but probably creative commons
 ## Acknowledgments
 * Those who helped my sucky code work.
 * Inspired by: Terraria
+
+
+## Method Description
+
+### Various Getting & Setting Methods:
+
+Get or set the indicated member of an object generally by mean of pointer reference.
+
+### Update() and Render() 
+
+Virtual Methods that render each object which can be overriden for special cases.
+
+### HandleInput() 
+
+Handles all imput and returns a list of InputEvents that will result in corresponding actions.
+
+### CheckAABBCollisions(obj1, obj2) 
+
+Checks whether any two objects with a bounding box are colliding and if so responds accordingly.
+
+
