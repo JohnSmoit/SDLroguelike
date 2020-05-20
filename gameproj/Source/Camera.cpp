@@ -34,5 +34,19 @@ void Camera::RenderObjects(std::vector<GameObject*> list)
     for (int i = 0; i < list.size(); i++) 
     {
         float offsetX, offsetY;
+
+        offsetX = list[i]->getPosition()->x - position.x;
+        offsetY = list[i]->getPosition()->y - position.y;
+
+        AABB* a = list[i]->getBoundingBox();
+
+        SDL_Rect src, dest;
+        src.w = dest.w = a->max.x;
+        src.h = dest.h = a->max.y;
+
+        dest.x = offsetX;
+        dest.y = offsetY;
+
+        SDL_RenderCopy(Game::renderer, list[i]->objtexture, &src, &dest);
     }
 }

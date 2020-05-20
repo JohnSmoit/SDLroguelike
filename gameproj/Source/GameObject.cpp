@@ -13,6 +13,11 @@ AABB* GameObject::getBoundingBox()
     return &boundingBox;
 }
 
+// SDL_Texture* getTexture() 
+// {
+//     return objtexture;
+// }
+
 void GameObject::bound(float x, float y) 
 {
     position.x = x;

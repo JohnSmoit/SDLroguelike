@@ -2,8 +2,8 @@
 #ifndef Camera_hpp
 #define Camera_hpp
 
-#include "GameObject.hpp"
 #include <vector>
+#include "GameObject.hpp"
 
 class Camera : public GameObject 
 {
@@ -21,6 +21,7 @@ class Camera : public GameObject
         //only called in a public camera Update method.
 
         void GetObjectsForRendering(std::vector<GameObject*> objList);
+        // void GetObjectsForRendering(std::vector<Gam*> objList);
         
     private:
 

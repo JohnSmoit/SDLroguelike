@@ -15,12 +15,15 @@ class GameObject
         void bound(float x, float y);
         void invertVelocity();
         void zeroVelocity();
+        //SDL_Texture* getTexture();
 
         Vector2* getPosition();
         Vector2* getVelocity();
         Vector2* getPositionLocal(); //relative to camera for player its always (0, 0)
         float getDirection();
         bool colliding = false;
+
+        SDL_Texture* objtexture;
 
         //void setPosition(float x, float y);
         AABB* getBoundingBox();
@@ -33,7 +36,6 @@ class GameObject
         float direction;
         AABB boundingBox;
 
-        SDL_Texture* objtexture;
         SDL_Rect srcRect, destRect;
 
 
