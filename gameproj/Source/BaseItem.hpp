@@ -7,12 +7,13 @@
 class BaseItem : public GameObject 
 {
     public:
-        BaseItem();
+        BaseItem(SDL_Texture* tex);
 
-        void pickUp();
+        //void pickUp();
 
-    private:
-}
+    protected:
+       // const float DropScaleDown = 0.5;
+};
 
 
 

@@ -4,7 +4,7 @@
 
 
 
-Vector2* GameObject::getPosition() //global position
+Vector2* GameObject::getPosition() // gets position
 {
     return &position;
 }

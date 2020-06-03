@@ -86,3 +86,31 @@ Handles all imput and returns a list of InputEvents that will result in correspo
 Checks whether any two objects with a bounding box are colliding and if so responds accordingly.
 
 
+## Improving Efficiency:
+
+### Rendering & Updating Caches:
+- Add Lists of objects that need to be rendered/updated and pass them to a global render/update method.
+
+### Port to Visual Studio:
+- Port the project to Visual Studio and make a branch of this repository.
+
+### Collisions & other processor-heavy elements:
+- Add method of optimization that only renders and checks collision if an object is in camera view.
+
+# Algorithm:
+- Create Screen 
+- Create Gameobjects
+  - Player
+  - Non-Player Entities (NIF)
+  - Tiles (NIF) 
+  - Items (NIF)
+- Start Game Loop
+- Updates
+- Rendering
+- User Input
+
+*NIF = Not Implemented Fully (Has written code but is not yet used at runtime.)
+
+
+
+

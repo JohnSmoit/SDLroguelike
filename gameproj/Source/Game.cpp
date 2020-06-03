@@ -165,8 +165,13 @@ void Game::render() //handles drawing of graphics.
 {
     SDL_RenderClear(renderer);
     SDL_RenderCopy(Game::renderer, backGround, &src, &dest);
-    player1->Render();
-    enemy->Render();
+    //player1->Render();
+    //enemy->Render();
+
+    for (GameObject* obj : entities) 
+    {
+        obj->Render();
+    } 
     //player2->Render();
     //map->DrawMap();
     // player->Render();

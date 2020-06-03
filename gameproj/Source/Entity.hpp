@@ -1,6 +1,6 @@
 #pragma once
-#ifndef Entity_hpp
-#define Entity_hpp
+//#ifndef Entity_hpp
+//#define Entity_hpp
 
 #include "GameObject.hpp"
 
@@ -29,4 +29,4 @@ needs to be displayed, needs to have a collision box, needs to be able to be des
 needs to be spawned.
 */
 
-#endif /* Entity.hpp */
+//#endif /* Entity.hpp */

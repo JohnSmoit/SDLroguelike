@@ -77,7 +77,8 @@ void PhysicsManager::Rebound(GameObject* obj1, GameObject* obj2) //for two solid
 
 void PhysicsManager::gravity(GameObject* obj1) //temporary
 {
-    //adds gravity constant to current velocity and gets nullified if colliding along the y axis.
+    Vector2* vY = obj1->getVelocity();
+    vY->y += gravity_constant;
 }
 
 void PhysicsManager::physicsUpdate(GameObject* obj1, GameObject* obj2) 
